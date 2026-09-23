@@ -1,0 +1,103 @@
+<!-- MathJax for rendering math in title entries -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+<div class="pub-box" style="background-color: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px);">
+  <!-- 1. The Custom Title -->
+  <div class="pub-title">
+  {% assign title = entry.title %}
+  
+  {% comment %} 1. Convert $text$ into <em>text</em> {% endcomment %}
+  {% assign title = title | regex_replace: '\$([^$]+)\$', '<em>\1</em>' %}
+  
+  {% comment %} 2. Convert _char or _{chars} into <sub> </sub> {% endcomment %}
+  {% assign title = title | regex_replace: '_([a-zA-Z0-9])', '<sub>\1</sub>' %}
+  {% assign title = title | regex_replace: '_\{([^}]+)\}', '<sub>\1</sub>' %}
+
+  {{ title }}
+</div>
+
+  <!-- 2. The Rest of the Citation -->
+  <div class="pub-citation">
+    {% assign authors = entry.author | split: " and " %}
+    {% for author in authors %}
+      {% assign name_parts = author | split: ", " %}
+      {% if name_parts.size > 1 %}
+        {% assign formatted_name = name_parts[1] | append: " " | append: name_parts[0] %}
+      {% else %}
+        {% assign formatted_name = author %}
+      {% endif %}
+
+      {% comment %} Bold your name after rearranging {% endcomment %}
+      {% assign formatted_name = formatted_name | replace: 'Keegan Yao', '<strong>Keegan Yao</strong>' %}
+
+      {{ formatted_name }}{% unless forloop.last %}, {% endunless %}
+    {% endfor %}{% if entry.alphabeta %} <u>(&alpha;-&beta;)</u>{% endif %}. <br>
+    {% if entry.journal %}<em>{{ entry.journal }}</em>, vol. {{ entry.volume }}, no. {{ entry.number }}, pp {{ entry.pages }}.{% endif %}
+    {% if entry.booktitle %}<em>{{ entry.booktitle }}</em>{% if entry.pages %}, pp {{ entry.pages }}{% endif %}.{% endif %}<br>
+    {% if entry.acronym %}
+      {% if entry.type == 'inproceedings' %}
+        <!-- Conference Badge (Blue) -->
+        <div class="pub-acronym" style="display: inline-block; font-weight: 600; font-size: 0.85em; margin-top: 10px; background-color: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px;">
+          {{ entry.acronym }}
+        </div>
+      {% elsif entry.type == 'article' %}
+        <!-- Journal Badge (Magenta) -->
+        <div class="pub-acronym" style="display: inline-block; font-weight: 600; font-size: 0.85em; margin-top: 10px; background-color: #fce7f3; color: #be185d; padding: 2px 8px; border-radius: 6px;">
+          {{ entry.acronym }}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- Colored Buttons -->
+  <div class="pub-actions">
+    <!-- Abstract Toggle Button (Soft Yellow) -->
+    {% if entry.abstract %}
+      <button class="pub-btn btn-abs" onclick="toggleAbstract('{{ entry.key }}')">Abstract</button>
+    {% endif %}
+
+    {% if entry.doi %}
+      <a class="pub-btn btn-doi" href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+    {% endif %}
+    
+    {% if entry.url %}
+      <a class="pub-btn btn-url" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">PDF</a>
+    {% endif %}
+    
+    <!-- BibTeX Toggle Button -->
+    <button class="pub-btn btn-bib" onclick="toggleBibtex('{{ entry.key }}')">BibTeX</button>
+  </div>
+
+  <!-- Hidden Abstract Content Box -->
+  {% if entry.abstract %}
+    <div id="abstract-{{ entry.key }}" class="pub-abstract" style="display: none;">
+      {{ entry.abstract | markdownify }}
+    </div>
+  {% endif %}
+
+  <!-- Hidden BibTeX Code Block -->
+  <div id="bib-{{ entry.key }}" class="pub-bibtex" style="display: none;">
+    <pre><code>@{{ entry.type }}&#123;{{ entry.key }},
+    title = &#123;{{ entry.title }}&#125;,
+    author = &#123;{{ entry.author }}&#125;,
+    year = &#123;{{ entry.year }}&#125;{% if entry.journal %},
+    journal = &#123;{{ entry.journal }}&#125;{% endif %}{% if entry.booktitle %},
+    booktitle = &#123;{{ entry.booktitle }}&#125;{% endif %}{% if entry.volume %},
+    volume = &#123;{{ entry.volume }}&#125;{% endif %}{% if entry.number %},
+    number = &#123;{{ entry.number }}&#125;{% endif %}{% if entry.pages %},
+    pages = &#123;{{ entry.pages }}&#125;{% endif %}{% if entry.doi %},
+    doi = &#123;{{ entry.doi }}&#125;{% endif %}
+    &#125;</code></pre>
+  </div>
+</div>

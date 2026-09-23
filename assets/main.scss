@@ -1,0 +1,7 @@
+---
+---
+/* 1. This imports the default theme's hidden styles */
+@import "{{ site.theme }}";
+
+/* 2. This imports your custom.css file */
+@import "custom";
