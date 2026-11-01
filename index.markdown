@@ -1,6 +1,7 @@
 ---
 # Feel free to add content and custom Front Matter to this file.
 layout: home
+mathjax: true
 ---
 
 <style>
@@ -196,6 +197,24 @@ layout: home
 </style>
 
 
+{% if page.mathjax %}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      startup: {
+        typeset: true
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+{% endif %}
+
+
 <div class="home">
 
   <section class="home-hero">
@@ -293,5 +312,46 @@ layout: home
     </div>
 
   </section>
+
+
+  ($\alpha$-$\beta$): Authors listed in alphabetical order (theoretical computer science convention)
+
+{% bibliography %}
+
+
+
+<script>
+function toggleAbstract(id) {
+  var x = document.getElementById('abstract-' + id);
+  if (x.style.display === "none" || x.style.display === "") {
+    x.style.display = "block";
+    
+    // Tell MathJax to typeset the newly visible box
+    setTimeout(function() {
+      if (window.MathJax) {
+        if (typeof MathJax.typesetPromise === 'function') {
+          MathJax.typesetPromise([x]).catch(function(err) { console.log(err); });
+        } else if (typeof MathJax.typeset === 'function') {
+          MathJax.typeset([x]);
+        }
+      }
+    }, 50); // Small timeout ensures the DOM has painted the block display first
+    
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script>
+function toggleBibtex(key) {
+  var element = document.getElementById('bib-' + key);
+  if (element.style.display === "none") {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
+</script>
 
 </div>
