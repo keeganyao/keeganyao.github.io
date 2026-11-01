@@ -518,7 +518,7 @@ a:focus-visible {
       </p>
 
       <p class="hero-description">
-        I am a recent Ph.D. graduate in computer science from Duke University, advised by <a href="https://users.cs.duke.edu/~pankaj/" class="custom-link">Pankaj K. Agarwal</a>. My research focuses on designing simple and scalable algorithms for the _optimal transport (OT) problem_ and its variants through studying important geometric and structural properties of its solutions. OT is a common method of lifting geometry of points to geometry of distributions across mathematics, statistics, data science and machine learning. The algorithms I design mix together the strengths of both continuous and combinatorial optimization methods, and exploit geometry of the domain space. My research since graduation has focused on various extensions of OT to applications in data science and machine learning.
+        I am a recent Ph.D. graduate in computer science from Duke University, advised by <a href="https://users.cs.duke.edu/~pankaj/" class="custom-link">Pankaj K. Agarwal</a>. My research focuses on designing simple and scalable algorithms for the optimal transport (OT) problem and its variants through studying important geometric and structural properties of its solutions. OT is a common method of lifting geometry of points to geometry of distributions across mathematics, statistics, data science and machine learning. The algorithms I design mix together the strengths of both continuous and combinatorial optimization methods, and exploit geometry of the domain space. My research since graduation has focused on various extensions of OT to applications in data science and machine learning.
       </p>
 
       <p class="hero-description">
