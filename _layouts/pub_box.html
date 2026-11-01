@@ -27,16 +27,25 @@
   border-radius: 14px;
   padding: 24px;
   margin-bottom: 20px;
-
   color: #D4D4D8;
 
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease,
+              background-color 0.25s ease,
+              transform 0.25s ease;
 }
+
+/* Only the outer card changes on hover */
 
 .pub-box:hover {
   background-color: #1C201F;
   border-color: #10B981;
   transform: translateY(-3px);
+}
+
+/* Prevent nested elements from changing their borders on hover */
+
+.pub-box *:hover {
+  border-color: inherit;
 }
 
 
@@ -113,7 +122,9 @@
 }
 
 
-/* Action buttons */
+/* =================================
+   PUBLICATION ACTION BUTTONS
+================================= */
 
 .pub-actions {
   display: flex;
@@ -128,13 +139,21 @@
   align-items: center;
   justify-content: center;
 
-  padding: 7px 14px;
+  /* Identical dimensions */
+  width: 85px;
+  height: 34px;
+  box-sizing: border-box;
+
+  padding: 0;
 
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
+  line-height: 1;
 
+  text-align: center;
   text-decoration: none !important;
+
   border-radius: 7px;
   cursor: pointer;
 
@@ -270,7 +289,8 @@
   }
 
   .pub-btn {
-    padding: 7px 11px;
+    width: 85px;
+    height: 34px;
   }
 
 }
