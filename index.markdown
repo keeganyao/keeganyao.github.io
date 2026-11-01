@@ -504,10 +504,6 @@ a:focus-visible {
 
     <div class="hero-content">
 
-      <div class="hero-label">
-        Welcome to my website
-      </div>
-
       <h1 class="hero-name">
         Keegan Yao
       </h1>
@@ -597,12 +593,8 @@ a:focus-visible {
   <section class="publications-section">
 
     <h2 class="publications-heading">
-      Selected <span>Publications</span>
+      <span>Publications</span>
     </h2>
-
-    <p class="publications-description">
-      A collection of my academic publications and research contributions.
-    </p>
 
     <p class="publication-note">
       ($\alpha$-$\beta$): Authors listed in alphabetical order
