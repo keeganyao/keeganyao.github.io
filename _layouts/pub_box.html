@@ -79,7 +79,10 @@
 }
 
 
-/* Conference and journal badges */
+/* ==========================================
+   CONFERENCE AND JOURNAL BADGES
+   DBLP COLORS
+========================================== */
 
 .pub-acronym {
   display: inline-block;
@@ -88,13 +91,25 @@
   letter-spacing: 0.5px;
 
   margin-top: 10px;
-
-  background-color: #302943;
-  color: #C4B5FD;
-
-  border: 1px solid #51446D;
   padding: 4px 10px;
+
   border-radius: 6px;
+}
+
+/* Conferences: DBLP Blue */
+
+.pub-box .pub-acronym.conference {
+  background-color: #396b9f;
+  color: #FFFFFF;
+  border: 1px solid #396b9f;
+}
+
+/* Journals: DBLP Red */
+
+.pub-box .pub-acronym.journal {
+  background-color: #b23971;
+  color: #FFFFFF;
+  border: 1px solid #b23971;
 }
 
 
@@ -332,19 +347,16 @@
     {% if entry.acronym %}
 
       {% if entry.type == 'inproceedings' %}
-
-        <div class="pub-acronym">
+        <div class="pub-acronym conference">
           {{ entry.acronym }}
         </div>
-
+    
       {% elsif entry.type == 'article' %}
-
-        <div class="pub-acronym">
+        <div class="pub-acronym journal">
           {{ entry.acronym }}
         </div>
-
       {% endif %}
-
+    
     {% endif %}
 
   </div>
