@@ -137,18 +137,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 46px;
   height: 46px;
-  background: #191B20;
-  border: 1px solid #2A2D35;
+
+  /* Purple background */
+  background: #302943;
+
+  border: 1px solid #51446D;
   border-radius: 12px;
+
   transition: all 0.25s ease;
 }
 
 .social-links a:hover {
   transform: translateY(-4px);
-  border-color: #10B981;
-  background: #202B27;
+
+  background: #403354;
+  border-color: #A78BFA;
+
+  box-shadow: 0 4px 14px rgba(167, 139, 250, 0.2);
 }
 
 .social-links img {
