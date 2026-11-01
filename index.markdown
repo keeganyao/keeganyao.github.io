@@ -142,9 +142,9 @@ body {
   height: 46px;
 
   /* Purple background */
-  background: #302943;
+  background: #69558F;
 
-  border: 1px solid #51446D;
+  border: 1px solid #8B75B5;
   border-radius: 12px;
 
   transition: all 0.25s ease;
@@ -153,8 +153,8 @@ body {
 .social-links a:hover {
   transform: translateY(-4px);
 
-  background: #403354;
-  border-color: #A78BFA;
+  background: #8069AD;
+  border-color: #B9A2F5;
 
   box-shadow: 0 4px 14px rgba(167, 139, 250, 0.2);
 }
