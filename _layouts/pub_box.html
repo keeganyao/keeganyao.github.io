@@ -271,34 +271,71 @@
 
 
 /* =================================
-   BIBTEX CONTENT
+   BIBTEX - CODE EDITOR STYLE
 ================================= */
 
 .pub-bibtex {
-  margin-top: 16px;
+  margin-top: 18px;
+  padding: 0;
+  background-color: #17191F;
+  border: 1px solid #66502F;
+  border-left: 3px solid #C5A04A;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* Code container */
+
 .pub-bibtex pre {
-  background-color: #101114 !important;
-  color: #C4B5FD !important;
+  background: transparent !important;
+  color: #D4D4D8 !important;
 
-  border: 1px solid #343740;
-  border-radius: 8px;
+  border: none !important;
+  border-radius: 0 !important;
 
-  padding: 16px;
-  margin: 0;
+  padding: 22px 24px !important;
+  margin: 0 !important;
 
   overflow-x: auto;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  font-size: 12px;
-  line-height: 1.7;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace !important;
+
+  font-size: 13px;
+  line-height: 1.9;
 }
 
+/* Code text */
+
 .pub-bibtex code {
-  color: #C4B5FD;
-  background: transparent;
+  background: transparent !important;
+  color: #D4D4D8 !important;
+
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit;
+}
+
+/* Selection */
+
+.pub-bibtex pre::selection,
+.pub-bibtex code::selection {
+  background-color: #66502F;
+  color: #FFFFFF;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 768px) {
+  .pub-bibtex pre {
+    padding: 16px !important;
+    font-size: 12px;
+  }
 }
 
 
