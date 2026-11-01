@@ -31,6 +31,20 @@ body {
 
 
 /* =================================
+   REMOVE HEADER COMPLETELY
+================================= */
+
+.site-header {
+  display: none !important;
+}
+
+/* Remove any remaining top spacing */
+.page-content {
+  padding-top: 40px !important;
+}
+
+
+/* =================================
    MAIN TWO-COLUMN LAYOUT
 ================================= */
 
