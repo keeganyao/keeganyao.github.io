@@ -160,34 +160,89 @@ mathjax: true
   ================================= */
 
   .publications-section {
-    border-top: 1px solid #2A2D35;
-    padding-top: 55px;
-    margin-top: 20px;
-  }
+  border-top: 1px solid #2A2D35;
+  padding-top: 50px;
+  margin-top: 30px;
+}
 
-  .publications-heading {
-    color: #F4F4F5;
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
+.publications-heading {
+  color: #F4F4F5;
+  font-size: 36px;
+  font-weight: 700;
+}
 
-  .publications-heading span {
-    color: #10B981;
-  }
+.publications-heading span {
+  color: #10B981;
+}
 
-  .publications-description {
-    color: #A1A1AA;
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 35px;
-  }
+.publications-description {
+  color: #A1A1AA;
+  line-height: 1.8;
+}
 
-  .publication-note {
-    color: #A78BFA;
-    font-size: 14px;
-    margin-bottom: 30px;
+.publication-note {
+  color: #A78BFA;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Style individual entries without changing their structure */
+
+.publications-section li {
+  background: #191B20;
+  border: 1px solid #2A2D35;
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 16px;
+  color: #D4D4D8;
+  line-height: 1.8;
+}
+
+.publications-section li:hover {
+  border-color: #10B981;
+}
+
+.publications-section a {
+  color: #10B981;
+}
+
+.publications-section a:hover {
+  color: #A78BFA;
+}
+
+.publications-section button {
+  background: #22242B;
+  color: #10B981;
+  border: 1px solid #343740;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.publications-section pre {
+  background: #101114;
+  color: #D4D4D8;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+/* Responsive grid, if the plugin uses a list */
+
+.publications-section ol.bibliography,
+.publications-section ul.bibliography {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .publications-section ol.bibliography,
+  .publications-section ul.bibliography {
+    grid-template-columns: 1fr;
   }
+}
 
 
   /* =================================
@@ -450,22 +505,22 @@ mathjax: true
 
   <section class="publications-section">
 
-    <h2 class="publications-heading">
-      Selected <span>Publications</span>
-    </h2>
+  <h2 class="publications-heading">
+    Selected <span>Publications</span>
+  </h2>
 
-    <p class="publications-description">
-      A collection of my academic publications and research contributions.
-    </p>
+  <p class="publications-description">
+    A collection of my academic publications and research contributions.
+  </p>
 
-    <p class="publication-note">
-      ($\alpha$-$\beta$): Authors listed in alphabetical order
-      (theoretical computer science convention).
-    </p>
+  <p class="publication-note">
+    ($\alpha$-$\beta$): Authors listed in alphabetical order
+    (theoretical computer science convention).
+  </p>
 
-    {% bibliography %}
+  {% bibliography %}
 
-  </section>
+</section>
 
 </div>
 
