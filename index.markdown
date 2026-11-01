@@ -88,6 +88,30 @@ body {
 
 
 /* =================================
+   CUSTOM HYPERLINK
+================================= */
+
+.custom-link {
+  color: #10B981;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.custom-link:hover {
+  color: #A78BFA;
+  text-decoration: underline;
+}
+
+.custom-link:focus-visible {
+  outline: 2px solid #A78BFA;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+
+/* =================================
    RIGHT: PROFILE IMAGE
 ================================= */
 
@@ -458,11 +482,11 @@ body {
       </p>
 
       <p class="hero-description">
-        I am a recent Ph.D. graduate in computer science from Duke University, advised by <a href="https://users.cs.duke.edu/~pankaj/">Pankaj K. Agarwal</a>. My research focuses on designing simple and scalable algorithms for the _optimal transport (OT) problem_ and its variants through studying important geometric and structural properties of its solutions. OT is a common method of lifting geometry of points to geometry of distributions across mathematics, statistics, data science and machine learning. The algorithms I design mix together the strengths of both continuous and combinatorial optimization methods, and exploit geometry of the domain space. My research since graduation has focused on various extensions of OT to applications in data science and machine learning, including but not limited to: clustering of distributions, dynamic OT under distributional drift, symmetry-preserving transport plans, flow matchings using semi-discrete OT, and rewiring for graph neural networks.
+        I am a recent Ph.D. graduate in computer science from Duke University, advised by <a href="https://users.cs.duke.edu/~pankaj/" class="custom-link">Pankaj K. Agarwal</a>. My research focuses on designing simple and scalable algorithms for the _optimal transport (OT) problem_ and its variants through studying important geometric and structural properties of its solutions. OT is a common method of lifting geometry of points to geometry of distributions across mathematics, statistics, data science and machine learning. The algorithms I design mix together the strengths of both continuous and combinatorial optimization methods, and exploit geometry of the domain space. My research since graduation has focused on various extensions of OT to applications in data science and machine learning.
       </p>
 
       <p class="hero-description">
-        Before attending Duke University, I completed my undergraduate studies in mathematics and computer science at the University of Connecticut. While there, I had the great privilege of exploring many diverse fields across mathematics and computer science. My undergraduate honors thesis, under the supervision of <a href="https://www2.math.uconn.edu/~munteanu/">Ovidiu Munteanu</a>, was an expository paper on the existence of the Ricci flow under negative curvature lower bounds. In addition, I studied geometric data analysis of trajectories under <a href="https://donsheehy.net/">Don Sheehy</a>, comparison of phylogenetic trees with partially overlapping taxa under <a href="https://mukul-bansal.uconn.edu/">Mukul Bansal</a>, and high dimensional entropic uncertainty relations with applications to quantum cryptography under <a href="https://walterkrawec.org/">Walter Krawec</a>.
+        Before attending Duke University, I completed my undergraduate studies in mathematics and computer science at the University of Connecticut. While there, I had the great privilege of exploring many diverse fields across mathematics and computer science. My undergraduate honors thesis, under the supervision of <a href="https://www2.math.uconn.edu/~munteanu/" class="custom-link">Ovidiu Munteanu</a>, was an expository paper on the existence of the Ricci flow under negative curvature lower bounds. In addition, I studied geometric data analysis of trajectories under <a href="https://donsheehy.net/" class="custom-link">Don Sheehy</a>, comparison of phylogenetic trees with partially overlapping taxa under <a href="https://mukul-bansal.uconn.edu/" class="custom-link">Mukul Bansal</a>, and high dimensional entropic uncertainty relations with applications to quantum cryptography under <a href="https://walterkrawec.org/" class="custom-link">Walter Krawec</a>.
       </p>
 
 
