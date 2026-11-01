@@ -112,6 +112,32 @@ body {
 
 
 /* =================================
+   GLOBAL HYPERLINK STYLING
+================================= */
+
+/* All hyperlinks */
+a,
+a:visited {
+  color: #10B981 !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* All hyperlinks on hover */
+a:hover {
+  color: #A78BFA !important;
+  text-decoration: underline;
+}
+
+/* Keyboard accessibility */
+a:focus-visible {
+  outline: 2px solid #A78BFA;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+
+/* =================================
    RIGHT: PROFILE IMAGE
 ================================= */
 
