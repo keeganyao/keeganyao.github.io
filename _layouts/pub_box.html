@@ -19,7 +19,9 @@
 
 <style>
 
-/* Publication card */
+/* =================================
+   PUBLICATION CARD
+================================= */
 
 .pub-box {
   background-color: #191B20;
@@ -27,25 +29,18 @@
   border-radius: 14px;
   padding: 24px;
   margin-bottom: 20px;
+
   color: #D4D4D8;
 
-  transition: border-color 0.25s ease,
-              background-color 0.25s ease,
-              transform 0.25s ease;
+  /* No hover animation */
+  transition: none;
 }
-
-/* Only the outer card changes on hover */
 
 .pub-box:hover {
-  background-color: #1C201F;
-  border-color: #10B981;
-  transform: translateY(-3px);
-}
-
-/* Prevent nested elements from changing their borders on hover */
-
-.pub-box *:hover {
-  border-color: inherit;
+  background-color: #191B20;
+  border-color: #2A2D35;
+  transform: none;
+  box-shadow: none;
 }
 
 
