@@ -125,6 +125,25 @@
 
 
 /* =================================
+   VENUE BADGE AND PAGE NUMBERS
+================================= */
+
+.pub-venue-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.pub-pages {
+  color: #A1A1AA;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* =================================
    UNIFIED PUBLICATION BUTTONS
 ================================= */
 
@@ -401,7 +420,7 @@
   </div>
 
 
-  <!-- 2. PUBLICATION CITATION -->
+  <!-- 2. PUBLICATION AUTHORS -->
 
   <div class="pub-citation">
 
@@ -413,7 +432,23 @@
 
       {% if name_parts.size > 1 %}
 
-        {% assign formatted_name = name_parts[1] | append: " " | append: name_parts[0] %}
+        {% assign last_name = name_parts[0] %}
+        {% assign first_names = name_parts[1] | split: " " %}
+        {% assign formatted_name = "" %}
+
+        {% for first_name in first_names %}
+
+          {% assign initial = first_name | slice: 0 %}
+
+          {% if initial != "" %}
+
+            {% assign formatted_name = formatted_name | append: initial | append: ". " %}
+
+          {% endif %}
+
+        {% endfor %}
+
+        {% assign formatted_name = formatted_name | append: last_name %}
 
       {% else %}
 
@@ -421,44 +456,30 @@
 
       {% endif %}
 
+
       {% comment %}
-        Bold your name after rearranging
+        Bold your own name
       {% endcomment %}
 
-      {% assign formatted_name = formatted_name | replace: 'Keegan Yao', '<strong>Keegan Yao</strong>' %}
+      {% assign formatted_name = formatted_name | replace: 'K. Y.', '<strong>K. Y.</strong>' %}
 
       {{ formatted_name }}{% unless forloop.last %}, {% endunless %}
 
     {% endfor %}
 
+
     {% if entry.alphabeta %}
       <u>(&alpha;-&beta;)</u>
     {% endif %}.
 
-    <br>
-
-    {% if entry.journal %}
-
-      <em>{{ entry.journal }}</em>,
-      vol. {{ entry.volume }},
-      no. {{ entry.number }},
-      pp {{ entry.pages }}.
-
-    {% endif %}
-
-    {% if entry.booktitle %}
-
-      <em>{{ entry.booktitle }}</em>
-      {% if entry.pages %}, pp {{ entry.pages }}{% endif %}.
-
-    {% endif %}
-
-    <br>
+  </div>
 
 
-    <!-- 3. CONFERENCE / JOURNAL BADGE -->
+  <!-- 3. CONFERENCE / JOURNAL BADGE AND PAGE NUMBERS -->
 
-    {% if entry.acronym %}
+  {% if entry.acronym %}
+
+    <div class="pub-venue-line">
 
       {% if entry.type == 'inproceedings' %}
 
@@ -478,9 +499,17 @@
 
       {% endif %}
 
-    {% endif %}
+      {% if entry.pages %}
 
-  </div>
+        <span class="pub-pages">
+          pp. {{ entry.pages }}
+        </span>
+
+      {% endif %}
+
+    </div>
+
+  {% endif %}
 
 
   <!-- 4. PUBLICATION ACTION BUTTONS -->
@@ -567,6 +596,11 @@
   <div id="bib-{{ entry.key }}"
     class="pub-bibtex"
     style="display: none;">
+
+    <div class="bibtex-header">
+      <span>BIBTEX REFERENCE</span>
+      <span>{{ entry.key }}</span>
+    </div>
 
     <pre><code>@{{ entry.type }}&#123;{{ entry.key }},
     title = &#123;{{ entry.title }}&#125;,
