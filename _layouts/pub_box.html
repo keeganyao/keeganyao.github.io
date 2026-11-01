@@ -476,41 +476,53 @@
   </div>
 
 
-  <!-- 3. CONFERENCE / JOURNAL BADGE AND PAGE NUMBERS -->
+  <!-- 3. CONFERENCE / JOURNAL BADGE AND PUBLICATION DETAILS -->
 
-  {% if entry.acronym %}
-
-    <div class="pub-venue-line">
-
-      {% if entry.type == 'inproceedings' %}
-
-        <!-- Conference: DBLP Blue -->
-
-        <div class="pub-acronym conference">
-          {{ entry.acronym }}
-        </div>
-
-      {% elsif entry.type == 'article' %}
-
-        <!-- Journal: DBLP Red -->
-
-        <div class="pub-acronym journal">
-          {{ entry.acronym }}
-        </div>
-
-      {% endif %}
-
-      {% if entry.pages %}
-
-        <span class="pub-pages">
-          pp. {{ entry.pages }}
-        </span>
-
-      {% endif %}
-
-    </div>
-
-  {% endif %}
+     {% if entry.acronym %}
+     
+       <div class="pub-venue-line">
+     
+         {% if entry.type == 'inproceedings' %}
+     
+           <!-- Conference: DBLP Blue -->
+     
+           <div class="pub-acronym conference">
+             {{ entry.acronym }}
+           </div>
+     
+           {% if entry.pages %}
+             <span class="pub-pages">
+               pp. {{ entry.pages }}
+             </span>
+           {% endif %}
+     
+         {% elsif entry.type == 'article' %}
+     
+           <!-- Journal: DBLP Red -->
+     
+           <div class="pub-acronym journal">
+             {{ entry.acronym }}
+           </div>
+     
+           <span class="pub-pages">
+             {% if entry.volume %}
+               vol. {{ entry.volume }}
+             {% endif %}
+     
+             {% if entry.number %}
+               no. {{ entry.number }}
+             {% endif %}
+     
+             {% if entry.pages %}
+               , pp. {{ entry.pages }}
+             {% endif %}
+           </span>
+     
+         {% endif %}
+     
+       </div>
+     
+     {% endif %}
 
 
   <!-- 4. PUBLICATION ACTION BUTTONS -->
