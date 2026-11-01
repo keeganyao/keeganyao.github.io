@@ -5,217 +5,426 @@ mathjax: true
 ---
 
 <style>
-  /* =================================
-     PROFESSIONAL DARK THEME
-  ================================= */
 
-  body {
-    background: #101114;
-    background-attachment: fixed;
-    color: #F4F4F5;
-  }
+/* =================================
+   PROFESSIONAL DARK THEME
+================================= */
+
+body {
+  background: #101114;
+  background-attachment: fixed;
+  color: #F4F4F5;
+}
+
+.page-content {
+  padding: 60px 0 40px;
+}
+
+.page-content .wrapper {
+  max-width: 1100px;
+}
+
+.page-heading,
+.post-title {
+  display: none;
+}
+
+
+/* =================================
+   MAIN TWO-COLUMN LAYOUT
+================================= */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 65px;
+  align-items: center;
+  min-height: 550px;
+  padding: 30px 0 65px;
+}
+
+
+/* =================================
+   LEFT: INTRODUCTION
+================================= */
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-label {
+  color: #10B981;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero-name {
+  color: #F4F4F5;
+  font-size: clamp(42px, 5vw, 60px);
+  font-weight: 750;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.hero-subtitle {
+  color: #A78BFA;
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.hero-description {
+  color: #A1A1AA;
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 570px;
+  margin-bottom: 16px;
+}
+
+
+/* =================================
+   RIGHT: PROFILE IMAGE
+================================= */
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  max-width: 370px;
+  justify-self: end;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 2px solid #10B981;
+  border-radius: 22px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.hero-image img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  border: none;
+}
+
+
+/* =================================
+   SOCIAL ICONS
+================================= */
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: #191B20;
+  border: 1px solid #2A2D35;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-4px);
+  border-color: #10B981;
+  background: #202B27;
+}
+
+.social-links img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  border: none;
+}
+
+
+/* =================================
+   PUBLICATIONS SECTION
+================================= */
+
+.publications-section {
+  border-top: 1px solid #2A2D35;
+  padding-top: 50px;
+  margin-top: 20px;
+}
+
+.publications-heading {
+  color: #F4F4F5;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.publications-heading span {
+  color: #10B981;
+}
+
+.publications-description {
+  color: #A1A1AA;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.publication-note {
+  color: #A78BFA;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+
+/* =================================
+   PUBLICATION CSS GRID
+================================= */
+
+/*
+   Jekyll Scholar normally generates:
+
+   <ol class="bibliography">
+       <li>Publication 1</li>
+       <li>Publication 2</li>
+   </ol>
+
+   We turn this list into a two-column grid.
+*/
+
+.publications-section .bibliography {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  list-style: none !important;
+  counter-reset: none;
+}
+
+/* Individual publication cards */
+
+.publications-section .bibliography > li {
+  display: block;
+
+  background: #191B20;
+  border: 1px solid #2A2D35;
+  border-radius: 14px;
+
+  padding: 22px;
+  margin: 0 !important;
+
+  color: #D4D4D8;
+  font-size: 14px;
+  line-height: 1.8;
+
+  overflow-wrap: anywhere;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+/* Card hover effect */
+
+.publications-section .bibliography > li:hover {
+  border-color: #10B981;
+  background: #1C201F;
+  transform: translateY(-3px);
+}
+
+
+/* =================================
+   PUBLICATION TEXT AND LINKS
+================================= */
+
+/* Links */
+
+.publications-section .bibliography a {
+  color: #10B981;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.publications-section .bibliography a:hover {
+  color: #A78BFA;
+  text-decoration: underline;
+}
+
+/* Paper titles */
+
+.publications-section .bibliography em {
+  color: #F4F4F5;
+}
+
+/* Bold metadata */
+
+.publications-section .bibliography strong {
+  color: #A78BFA;
+}
+
+/* Author and publication text */
+
+.publications-section .bibliography li {
+  overflow-wrap: anywhere;
+}
+
+
+/* =================================
+   ABSTRACT AND BIBTEX
+================================= */
+
+.publications-section button {
+  background: #22242B;
+  color: #10B981;
+
+  border: 1px solid #343740;
+  border-radius: 7px;
+
+  padding: 6px 12px;
+  margin: 8px 5px 0 0;
+
+  cursor: pointer;
+  font-size: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.publications-section button:hover {
+  background: #25342F;
+  border-color: #10B981;
+}
+
+/* Abstract and BibTeX containers */
+
+.publications-section pre {
+  background: #101114;
+  color: #D4D4D8;
+
+  border: 1px solid #343740;
+  border-radius: 8px;
+
+  padding: 14px;
+  margin-top: 10px;
+
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.publications-section code {
+  color: #A78BFA;
+}
+
+
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media screen and (max-width: 768px) {
 
   .page-content {
-    padding: 60px 0 40px;
+    padding-top: 35px;
   }
-
-  .page-content .wrapper {
-    max-width: 1100px;
-  }
-
-  .page-heading,
-  .post-title {
-    display: none;
-  }
-
-  /* =================================
-     MAIN TWO-COLUMN LAYOUT
-  ================================= */
 
   .home-hero {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 65px;
-    align-items: center;
-    min-height: 550px;
-    padding: 30px 0;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: auto;
+    padding: 20px 0 45px;
   }
 
-  /* =================================
-     LEFT: INTRODUCTION
-  ================================= */
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero-label {
-    color: #10B981;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
+  .hero-image {
+    order: -1;
+    max-width: 260px;
+    justify-self: center;
   }
 
   .hero-name {
-    color: #F4F4F5;
-    font-size: clamp(42px, 5vw, 60px);
-    font-weight: 750;
-    line-height: 1.15;
-    margin: 0 0 12px;
+    font-size: 42px;
   }
 
   .hero-subtitle {
-    color: #A78BFA;
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 25px;
+    font-size: 17px;
   }
 
   .hero-description {
-    color: #A1A1AA;
-    font-size: 16px;
-    line-height: 1.9;
-    max-width: 570px;
-    margin-bottom: 16px;
+    font-size: 15px;
   }
-
-  /* =================================
-     RIGHT: PROFILE IMAGE
-  ================================= */
-
-  .hero-image {
-    position: relative;
-    width: 100%;
-    max-width: 370px;
-    justify-self: end;
-  }
-
-  .hero-image::before {
-    content: "";
-    position: absolute;
-    inset: -12px;
-    border: 2px solid #10B981;
-    border-radius: 22px;
-    opacity: 0.5;
-    z-index: 0;
-  }
-
-  .hero-image img {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 16px;
-    border: none;
-  }
-
-  /* =================================
-     SOCIAL ICONS
-  ================================= */
 
   .social-links {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 18px;
-    margin-top: 28px;
+    gap: 14px;
+    flex-wrap: wrap;
   }
 
-  .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    background: #191B20;
-    border: 1px solid #2A2D35;
-    border-radius: 12px;
-    transition: all 0.25s ease;
+  .publications-heading {
+    font-size: 30px;
   }
 
-  .social-links a:hover {
-    transform: translateY(-4px);
-    border-color: #10B981;
-    background: #202B27;
+  .publications-section .bibliography {
+    grid-template-columns: 1fr;
   }
 
-  .social-links img {
-    width: 25px;
-    height: 25px;
-    object-fit: contain;
-    border: none;
-  }
-
-  /* =================================
-     MOBILE RESPONSIVENESS
-  ================================= */
-
-  @media screen and (max-width: 768px) {
-
-    .page-content {
-      padding-top: 35px;
-    }
-
-    .home-hero {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      min-height: auto;
-      padding: 20px 0;
-    }
-
-    .hero-image {
-      order: -1;
-      max-width: 260px;
-      justify-self: center;
-    }
-
-    .hero-name {
-      font-size: 42px;
-    }
-
-    .hero-subtitle {
-      font-size: 17px;
-    }
-
-    .hero-description {
-      font-size: 15px;
-    }
-
-    .social-links {
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-  }
+}
 
 </style>
 
 
+<!-- =================================
+     MATHJAX CONFIGURATION
+================================= -->
+
 {% if page.mathjax %}
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      startup: {
-        typeset: true
-      }
-    };
-  </script>
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    startup: {
+      typeset: true
+    }
+  };
+</script>
+
+<script
+  type="text/javascript"
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 {% endif %}
 
 
 <div class="home">
+
+
+  <!-- =================================
+       INTRODUCTION
+  ================================== -->
 
   <section class="home-hero">
 
@@ -314,44 +523,102 @@ mathjax: true
   </section>
 
 
-  ($\alpha$-$\beta$): Authors listed in alphabetical order (theoretical computer science convention)
+  <!-- =================================
+       PUBLICATIONS
+  ================================== -->
 
-{% bibliography %}
+  <section class="publications-section">
+
+    <h2 class="publications-heading">
+      Selected <span>Publications</span>
+    </h2>
+
+    <p class="publications-description">
+      A collection of my academic publications and research contributions.
+    </p>
+
+    <p class="publication-note">
+      ($\alpha$-$\beta$): Authors listed in alphabetical order
+      (theoretical computer science convention).
+    </p>
+
+    {% bibliography %}
+
+  </section>
 
 
+  <!-- =================================
+       ABSTRACT TOGGLE
+  ================================== -->
 
-<script>
-function toggleAbstract(id) {
-  var x = document.getElementById('abstract-' + id);
-  if (x.style.display === "none" || x.style.display === "") {
-    x.style.display = "block";
-    
-    // Tell MathJax to typeset the newly visible box
-    setTimeout(function() {
-      if (window.MathJax) {
-        if (typeof MathJax.typesetPromise === 'function') {
-          MathJax.typesetPromise([x]).catch(function(err) { console.log(err); });
-        } else if (typeof MathJax.typeset === 'function') {
-          MathJax.typeset([x]);
+  <script>
+
+  function toggleAbstract(id) {
+
+    var x = document.getElementById('abstract-' + id);
+
+    if (!x) return;
+
+    if (x.style.display === "none" || x.style.display === "") {
+
+      x.style.display = "block";
+
+      setTimeout(function() {
+
+        if (window.MathJax) {
+
+          if (typeof MathJax.typesetPromise === 'function') {
+
+            MathJax.typesetPromise([x])
+              .catch(function(err) {
+                console.log(err);
+              });
+
+          } else if (typeof MathJax.typeset === 'function') {
+
+            MathJax.typeset([x]);
+
+          }
+
         }
-      }
-    }, 50); // Small timeout ensures the DOM has painted the block display first
-    
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
 
-<script>
-function toggleBibtex(key) {
-  var element = document.getElementById('bib-' + key);
-  if (element.style.display === "none") {
-    element.style.display = "block";
-  } else {
-    element.style.display = "none";
+      }, 50);
+
+    } else {
+
+      x.style.display = "none";
+
+    }
+
   }
-}
-</script>
+
+  </script>
+
+
+  <!-- =================================
+       BIBTEX TOGGLE
+  ================================== -->
+
+  <script>
+
+  function toggleBibtex(key) {
+
+    var element = document.getElementById('bib-' + key);
+
+    if (!element) return;
+
+    if (element.style.display === "none") {
+
+      element.style.display = "block";
+
+    } else {
+
+      element.style.display = "none";
+
+    }
+
+  }
+
+  </script>
 
 </div>
