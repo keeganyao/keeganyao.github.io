@@ -1,14 +1,11 @@
-
 ---
-# Main homepage
+# Feel free to add content and custom Front Matter to this file.
 layout: home
-mathjax: true
 ---
 
 <style>
-
   /* =================================
-     GLOBAL THEME
+     PROFESSIONAL DARK THEME
   ================================= */
 
   body {
@@ -18,7 +15,7 @@ mathjax: true
   }
 
   .page-content {
-    padding: 60px 0 50px;
+    padding: 60px 0 40px;
   }
 
   .page-content .wrapper {
@@ -30,9 +27,8 @@ mathjax: true
     display: none;
   }
 
-
   /* =================================
-     HOMEPAGE HERO
+     MAIN TWO-COLUMN LAYOUT
   ================================= */
 
   .home-hero {
@@ -41,8 +37,12 @@ mathjax: true
     gap: 65px;
     align-items: center;
     min-height: 550px;
-    padding: 30px 0 65px;
+    padding: 30px 0;
   }
+
+  /* =================================
+     LEFT: INTRODUCTION
+  ================================= */
 
   .hero-content {
     display: flex;
@@ -82,9 +82,8 @@ mathjax: true
     margin-bottom: 16px;
   }
 
-
   /* =================================
-     PROFILE IMAGE
+     RIGHT: PROFILE IMAGE
   ================================= */
 
   .hero-image {
@@ -115,7 +114,6 @@ mathjax: true
     border-radius: 16px;
     border: none;
   }
-
 
   /* =================================
      SOCIAL ICONS
@@ -154,198 +152,6 @@ mathjax: true
     border: none;
   }
 
-
-  /* =================================
-     PUBLICATIONS SECTION
-  ================================= */
-
-  .publications-section {
-  border-top: 1px solid #2A2D35;
-  padding-top: 50px;
-  margin-top: 30px;
-}
-
-.publications-heading {
-  color: #F4F4F5;
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.publications-heading span {
-  color: #10B981;
-}
-
-.publications-description {
-  color: #A1A1AA;
-  line-height: 1.8;
-}
-
-.publication-note {
-  color: #A78BFA;
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
-/* Style individual entries without changing their structure */
-
-.publications-section li {
-  background: #191B20;
-  border: 1px solid #2A2D35;
-  border-radius: 12px;
-  padding: 22px;
-  margin-bottom: 16px;
-  color: #D4D4D8;
-  line-height: 1.8;
-}
-
-.publications-section li:hover {
-  border-color: #10B981;
-}
-
-.publications-section a {
-  color: #10B981;
-}
-
-.publications-section a:hover {
-  color: #A78BFA;
-}
-
-.publications-section button {
-  background: #22242B;
-  color: #10B981;
-  border: 1px solid #343740;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.publications-section pre {
-  background: #101114;
-  color: #D4D4D8;
-  padding: 12px;
-  overflow-x: auto;
-}
-
-/* Responsive grid, if the plugin uses a list */
-
-.publications-section ol.bibliography,
-.publications-section ul.bibliography {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  padding: 0;
-  list-style: none;
-}
-
-@media (max-width: 768px) {
-  .publications-section ol.bibliography,
-  .publications-section ul.bibliography {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-  /* =================================
-     BIBLIOGRAPHY GRID
-  ================================= */
-
-  /* The bibliography plugin generates
-     the publication entries. */
-
-  .publications-section ol,
-  .publications-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  /* Individual publication cards */
-
-  .publications-section li {
-    background: #191B20;
-    border: 1px solid #2A2D35;
-    border-radius: 14px;
-    padding: 24px;
-    color: #D4D4D8;
-    font-size: 14px;
-    line-height: 1.8;
-    transition: all 0.25s ease;
-    overflow-wrap: anywhere;
-  }
-
-  .publications-section li:hover {
-    border-color: #10B981;
-    transform: translateY(-3px);
-  }
-
-  /* Publication links */
-
-  .publications-section a {
-    color: #10B981;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .publications-section a:hover {
-    color: #A78BFA;
-    text-decoration: underline;
-  }
-
-  /* Publication titles */
-
-  .publications-section em {
-    color: #F4F4F5;
-    font-style: italic;
-  }
-
-  /* Publication year / metadata */
-
-  .publications-section strong {
-    color: #A78BFA;
-  }
-
-
-  /* =================================
-     ABSTRACT AND BIBTEX
-  ================================= */
-
-  .publications-section button {
-    background: #22242B;
-    color: #10B981;
-    border: 1px solid #343740;
-    border-radius: 7px;
-    padding: 6px 12px;
-    margin: 8px 5px 0 0;
-    cursor: pointer;
-    font-size: 12px;
-    transition: all 0.2s ease;
-  }
-
-  .publications-section button:hover {
-    background: #25342F;
-    border-color: #10B981;
-  }
-
-  .publications-section pre {
-    background: #101114;
-    color: #D4D4D8;
-    border: 1px solid #343740;
-    border-radius: 8px;
-    padding: 14px;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-  }
-
-  .publications-section code {
-    color: #A78BFA;
-  }
-
-
   /* =================================
      MOBILE RESPONSIVENESS
   ================================= */
@@ -360,7 +166,7 @@ mathjax: true
       grid-template-columns: 1fr;
       gap: 40px;
       min-height: auto;
-      padding: 20px 0 45px;
+      padding: 20px 0;
     }
 
     .hero-image {
@@ -385,15 +191,6 @@ mathjax: true
       gap: 14px;
       flex-wrap: wrap;
     }
-
-    .publications-heading {
-      font-size: 30px;
-    }
-
-    .publications-section ol,
-    .publications-section ul {
-      grid-template-columns: 1fr;
-    }
   }
 
 </style>
@@ -401,11 +198,9 @@ mathjax: true
 
 <div class="home">
 
-  <!-- =================================
-       INTRODUCTION
-  ================================= -->
-
   <section class="home-hero">
+
+    <!-- LEFT COLUMN: TEXT -->
 
     <div class="hero-content">
 
@@ -487,106 +282,16 @@ mathjax: true
     </div>
 
 
-    <!-- PROFILE IMAGE -->
+    <!-- RIGHT COLUMN: PROFILE IMAGE -->
 
     <div class="hero-image">
 
-      <img src="/assets/images/profile1.jpeg"
-           alt="Keegan Yao">
+      <img
+        src="/assets/images/profile1.jpeg"
+        alt="Keegan Yao">
 
     </div>
 
   </section>
 
-
-  <!-- =================================
-       PUBLICATIONS
-  ================================= -->
-
-  <section class="publications-section">
-
-  <h2 class="publications-heading">
-    Selected <span>Publications</span>
-  </h2>
-
-  <p class="publications-description">
-    A collection of my academic publications and research contributions.
-  </p>
-
-  <p class="publication-note">
-    ($\alpha$-$\beta$): Authors listed in alphabetical order
-    (theoretical computer science convention).
-  </p>
-
-  {% bibliography %}
-
-</section>
-
 </div>
-
-
-<!-- =================================
-     ABSTRACT TOGGLE
-================================= -->
-
-<script>
-
-function toggleAbstract(id) {
-
-  var x = document.getElementById('abstract-' + id);
-
-  if (!x) return;
-
-  if (x.style.display === "none" || x.style.display === "") {
-
-    x.style.display = "block";
-
-    setTimeout(function() {
-
-      if (window.MathJax) {
-
-        if (typeof MathJax.typesetPromise === 'function') {
-
-          MathJax.typesetPromise([x])
-            .catch(function(err) {
-              console.log(err);
-            });
-
-        } else if (typeof MathJax.typeset === 'function') {
-
-          MathJax.typeset([x]);
-
-        }
-
-      }
-
-    }, 50);
-
-  } else {
-
-    x.style.display = "none";
-
-  }
-
-}
-
-
-function toggleBibtex(key) {
-
-  var element = document.getElementById('bib-' + key);
-
-  if (!element) return;
-
-  if (element.style.display === "none") {
-
-    element.style.display = "block";
-
-  } else {
-
-    element.style.display = "none";
-
-  }
-
-}
-
-</script>
