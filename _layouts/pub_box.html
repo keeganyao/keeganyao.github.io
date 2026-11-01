@@ -7,31 +7,296 @@
     }
   };
 </script>
+
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>
 
 
-<div class="pub-box" style="background-color: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px);">
-  <!-- 1. The Custom Title -->
-  <div class="pub-title">
-  {% assign title = entry.title %}
-  
-  {% comment %} 1. Convert $text$ into <em>text</em> {% endcomment %}
-  {% assign title = title | regex_replace: '\$([^$]+)\$', '<em>\1</em>' %}
-  
-  {% comment %} 2. Convert _char or _{chars} into <sub> </sub> {% endcomment %}
-  {% assign title = title | regex_replace: '_([a-zA-Z0-9])', '<sub>\1</sub>' %}
-  {% assign title = title | regex_replace: '_\{([^}]+)\}', '<sub>\1</sub>' %}
+<!-- ==========================================
+     PUBLICATION BOX STYLING
+========================================== -->
 
-  {{ title }}
-</div>
+<style>
+
+/* Publication card */
+
+.pub-box {
+  background-color: #191B20;
+  border: 1px solid #2A2D35;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+
+  color: #D4D4D8;
+
+  transition: all 0.25s ease;
+}
+
+.pub-box:hover {
+  background-color: #1C201F;
+  border-color: #10B981;
+  transform: translateY(-3px);
+}
+
+
+/* Publication title */
+
+.pub-title {
+  color: #F4F4F5;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pub-title em,
+.pub-title sub {
+  color: #A78BFA;
+}
+
+
+/* Citation */
+
+.pub-citation {
+  color: #A1A1AA;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.pub-citation strong {
+  color: #F4F4F5;
+  font-weight: 700;
+}
+
+.pub-citation em {
+  color: #D4D4D8;
+}
+
+.pub-citation u {
+  color: #A78BFA;
+  text-decoration: none;
+}
+
+
+/* Conference and journal badges */
+
+.pub-acronym {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+
+  margin-top: 10px;
+
+  background-color: #302943;
+  color: #C4B5FD;
+
+  border: 1px solid #51446D;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+
+/* Action buttons */
+
+.pub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.pub-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 14px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none !important;
+  border-radius: 7px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Abstract button */
+
+.btn-abs {
+  background-color: #302943;
+  color: #C4B5FD;
+  border: 1px solid #69558F;
+}
+
+.btn-abs:hover {
+  background-color: #51446D;
+  color: #FFFFFF;
+  border-color: #A78BFA;
+}
+
+
+/* DOI button */
+
+.btn-doi {
+  background-color: #19382F;
+  color: #6EE7B7;
+  border: 1px solid #287A5D;
+}
+
+.btn-doi:hover {
+  background-color: #245440;
+  color: #FFFFFF;
+  border-color: #10B981;
+}
+
+
+/* PDF button */
+
+.btn-url {
+  background-color: #292D35;
+  color: #D4D4D8;
+  border: 1px solid #414653;
+}
+
+.btn-url:hover {
+  background-color: #383D48;
+  color: #FFFFFF;
+  border-color: #A1A1AA;
+}
+
+
+/* BibTeX button */
+
+.btn-bib {
+  background-color: #302943;
+  color: #C4B5FD;
+  border: 1px solid #69558F;
+}
+
+.btn-bib:hover {
+  background-color: #51446D;
+  color: #FFFFFF;
+  border-color: #A78BFA;
+}
+
+
+/* Abstract content */
+
+.pub-abstract {
+  background-color: #13151A;
+  border: 1px solid #343740;
+  border-left: 3px solid #10B981;
+  border-radius: 8px;
+
+  padding: 18px;
+  margin-top: 16px;
+
+  color: #A1A1AA;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* BibTeX content */
+
+.pub-bibtex {
+  margin-top: 16px;
+}
+
+.pub-bibtex pre {
+  background-color: #101114 !important;
+  color: #C4B5FD !important;
+
+  border: 1px solid #343740;
+  border-radius: 8px;
+
+  padding: 16px;
+  margin: 0;
+
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.pub-bibtex code {
+  color: #C4B5FD;
+  background: transparent;
+}
+
+
+/* Mobile styling */
+
+@media screen and (max-width: 768px) {
+
+  .pub-box {
+    padding: 18px;
+  }
+
+  .pub-title {
+    font-size: 16px;
+  }
+
+  .pub-citation {
+    font-size: 13px;
+  }
+
+  .pub-actions {
+    gap: 7px;
+  }
+
+  .pub-btn {
+    padding: 7px 11px;
+  }
+
+}
+
+</style>
+
+
+<!-- ==========================================
+     PUBLICATION BOX CONTENT
+========================================== -->
+
+<div class="pub-box">
+
+  <!-- 1. The Custom Title -->
+
+  <div class="pub-title">
+
+    {% assign title = entry.title %}
+
+    {% comment %} 1. Convert $text$ into <em>text</em> {% endcomment %}
+    {% assign title = title | regex_replace: '\$([^$]+)\$', '<em>\1</em>' %}
+
+    {% comment %} 2. Convert _char or _{chars} into <sub> </sub> {% endcomment %}
+    {% assign title = title | regex_replace: '_([a-zA-Z0-9])', '<sub>\1</sub>' %}
+    {% assign title = title | regex_replace: '_\{([^}]+)\}', '<sub>\1</sub>' %}
+
+    {{ title }}
+
+  </div>
+
 
   <!-- 2. The Rest of the Citation -->
+
   <div class="pub-citation">
+
     {% assign authors = entry.author | split: " and " %}
+
     {% for author in authors %}
+
       {% assign name_parts = author | split: ", " %}
+
       {% if name_parts.size > 1 %}
         {% assign formatted_name = name_parts[1] | append: " " | append: name_parts[0] %}
       {% else %}
@@ -39,55 +304,110 @@
       {% endif %}
 
       {% comment %} Bold your name after rearranging {% endcomment %}
+
       {% assign formatted_name = formatted_name | replace: 'Keegan Yao', '<strong>Keegan Yao</strong>' %}
 
       {{ formatted_name }}{% unless forloop.last %}, {% endunless %}
-    {% endfor %}{% if entry.alphabeta %} <u>(&alpha;-&beta;)</u>{% endif %}. <br>
-    {% if entry.journal %}<em>{{ entry.journal }}</em>, vol. {{ entry.volume }}, no. {{ entry.number }}, pp {{ entry.pages }}.{% endif %}
-    {% if entry.booktitle %}<em>{{ entry.booktitle }}</em>{% if entry.pages %}, pp {{ entry.pages }}{% endif %}.{% endif %}<br>
-    {% if entry.acronym %}
-      {% if entry.type == 'inproceedings' %}
-        <!-- Conference Badge (Blue) -->
-        <div class="pub-acronym" style="display: inline-block; font-weight: 600; font-size: 0.85em; margin-top: 10px; background-color: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px;">
-          {{ entry.acronym }}
-        </div>
-      {% elsif entry.type == 'article' %}
-        <!-- Journal Badge (Magenta) -->
-        <div class="pub-acronym" style="display: inline-block; font-weight: 600; font-size: 0.85em; margin-top: 10px; background-color: #fce7f3; color: #be185d; padding: 2px 8px; border-radius: 6px;">
-          {{ entry.acronym }}
-        </div>
-      {% endif %}
+
+    {% endfor %}
+
+    {% if entry.alphabeta %}
+      <u>(&alpha;-&beta;)</u>
+    {% endif %}.
+
+    <br>
+
+    {% if entry.journal %}
+      <em>{{ entry.journal }}</em>, vol. {{ entry.volume }},
+      no. {{ entry.number }}, pp {{ entry.pages }}.
     {% endif %}
+
+    {% if entry.booktitle %}
+      <em>{{ entry.booktitle }}</em>
+      {% if entry.pages %}, pp {{ entry.pages }}{% endif %}.
+    {% endif %}
+
+    <br>
+
+    {% if entry.acronym %}
+
+      {% if entry.type == 'inproceedings' %}
+
+        <div class="pub-acronym">
+          {{ entry.acronym }}
+        </div>
+
+      {% elsif entry.type == 'article' %}
+
+        <div class="pub-acronym">
+          {{ entry.acronym }}
+        </div>
+
+      {% endif %}
+
+    {% endif %}
+
   </div>
 
-  <!-- Colored Buttons -->
+
+  <!-- 3. Publication Action Buttons -->
+
   <div class="pub-actions">
-    <!-- Abstract Toggle Button (Soft Yellow) -->
+
     {% if entry.abstract %}
-      <button class="pub-btn btn-abs" onclick="toggleAbstract('{{ entry.key }}')">Abstract</button>
+      <button class="pub-btn btn-abs"
+        onclick="toggleAbstract('{{ entry.key }}')">
+        Abstract
+      </button>
     {% endif %}
 
     {% if entry.doi %}
-      <a class="pub-btn btn-doi" href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+      <a class="pub-btn btn-doi"
+        href="https://doi.org/{{ entry.doi }}"
+        target="_blank"
+        rel="noopener noreferrer">
+        DOI
+      </a>
     {% endif %}
-    
+
     {% if entry.url %}
-      <a class="pub-btn btn-url" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="pub-btn btn-url"
+        href="{{ entry.url }}"
+        target="_blank"
+        rel="noopener noreferrer">
+        PDF
+      </a>
     {% endif %}
-    
-    <!-- BibTeX Toggle Button -->
-    <button class="pub-btn btn-bib" onclick="toggleBibtex('{{ entry.key }}')">BibTeX</button>
+
+    <button class="pub-btn btn-bib"
+      onclick="toggleBibtex('{{ entry.key }}')">
+      BibTeX
+    </button>
+
   </div>
 
-  <!-- Hidden Abstract Content Box -->
+
+  <!-- 4. Hidden Abstract Content Box -->
+
   {% if entry.abstract %}
-    <div id="abstract-{{ entry.key }}" class="pub-abstract" style="display: none;">
+
+    <div id="abstract-{{ entry.key }}"
+      class="pub-abstract"
+      style="display: none;">
+
       {{ entry.abstract | markdownify }}
+
     </div>
+
   {% endif %}
 
-  <!-- Hidden BibTeX Code Block -->
-  <div id="bib-{{ entry.key }}" class="pub-bibtex" style="display: none;">
+
+  <!-- 5. Hidden BibTeX Code Block -->
+
+  <div id="bib-{{ entry.key }}"
+    class="pub-bibtex"
+    style="display: none;">
+
     <pre><code>@{{ entry.type }}&#123;{{ entry.key }},
     title = &#123;{{ entry.title }}&#125;,
     author = &#123;{{ entry.author }}&#125;,
@@ -99,5 +419,7 @@
     pages = &#123;{{ entry.pages }}&#125;{% endif %}{% if entry.doi %},
     doi = &#123;{{ entry.doi }}&#125;{% endif %}
     &#125;</code></pre>
+
   </div>
+
 </div>
