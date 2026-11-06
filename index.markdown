@@ -205,22 +205,31 @@ a:focus-visible {
   width: 46px;
   height: 46px;
 
-  /* Purple background */
-  background: #69558F;
+  /* Brighter purple background */
+  background: #8069AD;
 
-  border: 1px solid #8B75B5;
+  /* Soft lavender border */
+  border: 1px solid #A78BFA;
   border-radius: 12px;
 
   transition: all 0.25s ease;
+
+  /* Override global hyperlink colors */
+  color: #F4F4F5 !important;
 }
 
 .social-links a:hover {
   transform: translateY(-4px);
 
-  background: #8069AD;
-  border-color: #B9A2F5;
+  background: #9580C9;
+  border-color: #C4B5FD;
 
-  box-shadow: 0 4px 14px rgba(167, 139, 250, 0.2);
+  box-shadow: 0 4px 18px rgba(167, 139, 250, 0.35);
+}
+
+.social-links a:focus-visible {
+  outline: 2px solid #10B981;
+  outline-offset: 4px;
 }
 
 .social-links img {
